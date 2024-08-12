@@ -85,10 +85,27 @@ namespace ChryslerWorkplace.Controllers
         [HttpDelete("{id}")]
         public Department DeleteDept(int id)
         {
-            Department deleted = dbContext.Departments.Find(id);
-            dbContext.Departments.Remove(deleted);
+            // Step 1: Find the department by its ID
+            Department deptDelete = dbContext.Departments.Find(id);
+
+            // Step 2: Check if the department exists
+            if (deptDelete == null)
+            {
+                return null;
+            }
+
+            // Step 3: Check if there are any employees associated with this department
+            bool hasEmployees  = dbContext.Employees.Any(e => e.DepartmentId == id);
+            if (hasEmployees)
+            {
+                throw new Exception("Unable to delete department with employees");
+            }
+
+
+            // Step 5: If no employees are associated with the department, delete it, save changes to DB
+            dbContext.Departments.Remove(deptDelete);
             dbContext.SaveChanges();
-            return deleted;
+            return deptDelete;
         }
     }
 }
