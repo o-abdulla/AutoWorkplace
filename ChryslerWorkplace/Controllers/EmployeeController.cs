@@ -11,21 +11,21 @@ namespace ChryslerWorkplace.Controllers
     {
         ChryslerDBContext dbContext = new ChryslerDBContext();
 
-        // GET: Employees
+        // GET: Employee
         [HttpGet]
         public List<Employee> GetEmployees()
         {
             return dbContext.Employees.ToList();
         }
 
-        // GET: Employees/1
+        // GET: Employee/1
         [HttpGet("{id}")]
         public Employee GetById(int id)
         {
             return dbContext.Employees.Find(id);
         }
 
-        // POST: Employees
+        // POST: Employee
         [HttpPost]
         public Employee NewEmployee([FromBody] Employee employee)
         {
@@ -34,7 +34,7 @@ namespace ChryslerWorkplace.Controllers
             return employee;
         }
 
-        // PUT: Employees/1
+        // PUT: Employee/1
         [HttpPut("{id}")]
         public Employee UpdateEmployee(int id, [FromBody] Employee employee)
         {
@@ -43,7 +43,7 @@ namespace ChryslerWorkplace.Controllers
             return employee;
         }
 
-        // DELETE: Employees/1
+        // DELETE: Employee/1
         [HttpDelete("{id}")]
         public Employee DeleteEmpById(int id)
         {
