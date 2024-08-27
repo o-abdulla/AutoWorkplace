@@ -10,14 +10,14 @@ namespace ChryslerWorkplace.Controllers
     {
         ChryslerDBContext dbContext = new ChryslerDBContext();
 
-        // GET: Departments
+        // GET: Department
         [HttpGet]
         public List<Department> GetDepts()
         {
             return dbContext.Departments.ToList();
         }
         
-        // GET: Departments/1
+        // GET: Department/1
         [HttpGet("{deptId}")]
         public ActionResult<Department> GetByDeptId(int deptId)
         {
@@ -30,7 +30,7 @@ namespace ChryslerWorkplace.Controllers
             return dept;
         }
 
-        // GET: Departments/1380
+        // GET: Department/1380
         [HttpGet("{deptNumber}")]
         public Department GetByDeptNumber(int deptNumber)
         {
@@ -50,7 +50,7 @@ namespace ChryslerWorkplace.Controllers
 
         //__________________________________________
 
-        // POST: Departments
+        // POST: Department
         [HttpPost]
         public IActionResult AddDept([FromBody] Department dept)
         {
@@ -72,7 +72,7 @@ namespace ChryslerWorkplace.Controllers
             }
         }
 
-        // PUT: Departments/1
+        // PUT: Department/1
         [HttpPut("{id}")]
         public Department UpdateDept(int id, [FromBody] Department dept)
         {
@@ -81,7 +81,7 @@ namespace ChryslerWorkplace.Controllers
             return dept;
         }
 
-        // DELETE: Departments/1
+        // DELETE: Department/1
         [HttpDelete("{id}")]
         public Department DeleteDept(int id)
         {
